@@ -9,4 +9,4 @@ Superset
 Задачи проекта
 1. Получаем вводные данные и проверяем основные метрики
 Оцениваем базовые метрики с помощью Superset (данные за ноябрь)
-([file:///C:/Users/maria/Downloads/2023-08-24_15-01-16.png](https://drive.google.com/file/d/1BfPbluCNE0ONEY5YmCQSmpBeU_BUEGAK/view?usp=sharing)https://drive.google.com/file/d/1BfPbluCNE0ONEY5YmCQSmpBeU_BUEGAK/view?usp=sharing)
+![2023-08-24_15-01-16](https://github.com/Macharaits/My_project/assets/117433497/f5d805d4-e974-4a4f-bd7d-102465148bfc)
