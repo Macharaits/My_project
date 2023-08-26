@@ -1,0 +1,21 @@
+SELECT toString(date) as date, 
+       toString(start_date) as start_date,
+       count(user_id) AS users
+FROM
+-- нашли уникальные значения пользования приложением
+  (SELECT *
+   FROM
+     (SELECT user_id,
+             min(toDate(time)) AS start_date
+      FROM simulator_20230720.feed_actions
+      WHERE source='organic'
+      GROUP BY user_id) t1
+   JOIN
+-- нашли пользователей, кто стартовал 20 дней назад
+     (SELECT DISTINCT user_id,
+                      toDate(time) AS date
+      FROM simulator_20230720.feed_actions
+      WHERE source='organic') t2 USING user_id
+   WHERE 
+   start_date >= today() - 20)
+GROUP BY start_date, date
