@@ -16,3 +16,22 @@
 Для проведения теста подсчитали CTR для каждого пользователя и построили график с распределением для информации. На графике видим, что распределение экспериментальных групп практически совпадает.
 
 ![2023-08-26_16-22-39](https://github.com/Macharaits/My_project/assets/117433497/5ef9c7cc-abcd-436b-b7ed-65a1962d792a)
+
+Теперь для проверки различий проведем бутстрап.
+```python 
+# Проведем бутстрап
+def  bootstrap_aa(n_bootstrap: int = 10_000,
+                  B: int = 500,) -> List:
+                  pvalues = []
+                  for _ in  range(n_bootstrap):
+                  group_2 = df_aa[df_aa['exp_group'] == 2]['ctr'].sample(B, replace=False).tolist()
+                  group_3 = df_aa[df_aa['exp_group'] == 3]['ctr'].sample(B, replace=False).tolist()
+                  pvalues.append(stats.ttest_ind(group_2, group_3, equal_var=False)[1])
+                  return pvalues
+```
+```python 
+sum(np.array(pvalues)<0.05)/10000
+```
+Вывод: Статистически значимые различия получаем в 4,8% , что соответствует ошибке I рода. Система сплитования на группы работает корректно.
+
+
